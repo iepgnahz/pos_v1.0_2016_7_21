@@ -114,13 +114,19 @@ function getPromotionSubTotalItems(promotionsItems,subTotalItems){
   let promotionsSubTotalItems = []
   for(let i=0;i<subTotalItems.length;i++){
     let flag = false
+    let type = ""
     let subPromotionsTotal = 0
-    for(let j=0;j<promotionsItems[0].barcodes.length;j++){
-      if(subTotalItems[i].barcode === promotionsItems[0].barcodes[j]){
+    for(let j=0;j<promotionsItems.length;j++){
+      for(let z=0;z<promotionsItems[j].barcodes.length;z++){
+      if(subTotalItems[i].barcode === promotionsItems[j].barcodes[z]){
         flag = true
+        type = promotionsItems[j].type
+        if(type==="BUY_TWO_GET_ONE_FREE"){
         subPromotionsTotal = subTotalItems[i].subTotal - (parseInt(subTotalItems[i].amount/3) * subTotalItems[i].price)
       }
+      }
     }
+  }
     if(!flag){
       subPromotionsTotal = subTotalItems[i].subTotal
     }
