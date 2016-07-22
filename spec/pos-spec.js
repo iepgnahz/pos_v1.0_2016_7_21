@@ -11,7 +11,7 @@ describe("formatTags",function(){
       'ITEM000005',
       'ITEM000005-2',
     ];
-    let a = loadAllItems()
+    
     let result = formatTags(tag)
     let expectResult =[
       {
